@@ -8,7 +8,6 @@ from module.handler.assets import POPUP_CONFIRM, STORY_SKIP
 from module.logger import logger
 from module.ocr.ocr import Digit
 from module.retire.retirement import Retirement
-from module.shop.shop_general import GeneralShop
 from module.log_res.log_res import LogRes
 
 RECORD_GACHA_OPTION = ('RewardRecord', 'gacha')
@@ -325,7 +324,7 @@ class RewardGacha(GachaUI, Retirement):
         if self.config.Gacha_Amount > self.build_ticket_count:
             buy[0] = self.build_ticket_count
             # Calculate rolls allowed based on configurations and resources
-            buy[1] = self.gacha_calculate(self.config.Gacha_Amount-self.build_ticket_count, gold_cost, cube_cost)
+            buy[1] = self.gacha_calculate(self.config.Gacha_Amount - self.build_ticket_count, gold_cost, cube_cost)
         else:
             LogRes(self.config).Cube = self.build_cube_count
             self.config.update()
